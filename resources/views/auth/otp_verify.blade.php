@@ -5,8 +5,12 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
-
+                <div class="card-header">{{ __('OTP Verify') }}</div>
+                @if(session('success'))
+	<div class="alert alert-success">
+		{{ session('success') }}
+	</div>
+@endif
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
@@ -40,12 +44,12 @@
                         </div> -->
 
                         <div class="form-group row">
-                            <label for="phonenumber" class="col-md-4 col-form-label text-md-right">{{ __('Phone Number') }}</label>
+                            <label for="otp" class="col-md-4 col-form-label text-md-right">{{ __('OTP') }}</label>
 
                             <div class="col-md-6">
-                                <input id="phonenumber" type="phonenumber" class="form-control @error('phonenumber') is-invalid @enderror" name="phonenumber" value="{{ old('phonenumber') }}" autocomplete="phonenumber" autofocus>
+                                <input id="otp" type="text" class="form-control @error('otp') is-invalid @enderror" name="otp" value="{{ old('otp') }}" autocomplete="" autofocus>
 
-                                @error('phonenumber')
+                                @error('otp')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -53,7 +57,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <!-- <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
@@ -65,9 +69,9 @@
                                     </span>
                                 @enderror
                             </div>
-                        </div>
+                        </div> -->
 
-                        <div class="form-group row">
+                        <!-- <div class="form-group row">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
@@ -77,12 +81,12 @@
                                     </label>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
+                                    {{ __('Verify') }}
                                 </button>
 
                                 @if (Route::has('password.request'))
